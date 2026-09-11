@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ignacio Cáceres — .NET Developer | Legacy Systems Modernization</title>
+<meta name="description" content="I maintain and modernize the .NET systems nobody else wants to touch. ASP.NET Web Forms, VB.NET, C#, SQL Server, and migrations to .NET 10 + React.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="logo">Ignacio Cáceres</a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <section id="top" class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">.NET Developer · Legacy Systems Specialist</p>
+      <h1>I modernize the .NET systems nobody else wants to touch.</h1>
+      <p class="hero-sub">
+        4+ years keeping mission-critical banking systems running — ASP.NET Web Forms, VB.NET, C#, WCF,
+        and SQL Server running live financial data. I take legacy code that's too risky to touch and
+        bring it forward without breaking production.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">See my work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <div class="about-grid">
+        <p>
+          For the past 4 years I've worked as a developer at a financial institution, building and maintaining
+          mission-critical systems: online banking (ASP.NET Web Forms, VB.NET, C#), WCF service layers, and
+          SQL Server databases handling live financial data.
+        </p>
+        <p>
+          Most developers run from legacy code. I don't — these are the systems that actually run businesses,
+          and working at a bank taught me to change them carefully: test thoroughly, understand the blast radius
+          of every change, and never break production. I bring that same discipline to every project, whether
+          I'm fixing a 2,000-line stored procedure with no documentation or migrating a Web Forms app to a
+          modern .NET 10 + React stack.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Legacy .NET</h3>
+          <ul class="chip-list">
+            <li>ASP.NET Web Forms</li>
+            <li>VB.NET</li>
+            <li>C#</li>
+            <li>WCF</li>
+            <li>WinForms</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Database</h3>
+          <ul class="chip-list">
+            <li>SQL Server</li>
+            <li>T-SQL</li>
+            <li>Stored Procedures</li>
+            <li>Query Optimization</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Modern stack</h3>
+          <ul class="chip-list">
+            <li>.NET 10</li>
+            <li>ASP.NET Core / Minimal API</li>
+            <li>React</li>
+            <li>Next.js</li>
+            <li>REST APIs</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Other</h3>
+          <ul class="chip-list">
+            <li>Python</li>
+            <li>Git</li>
+            <li>Docker</li>
+            <li>Linux</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">Original demo projects built to show how I approach legacy modernization — real code from client work stays confidential.</p>
+
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <div class="project-thumb">
+            <img src="assets/images/project-legacy-modern.jpg" alt="Screenshot of the modernized Customer Ledger accounts screen">
+          </div>
+          <div class="project-body">
+            <h3>Legacy ASP.NET Web Forms → .NET 10 + React</h3>
+            <p>
+              A fictional bank "Customer Ledger" module shown before and after modernization: from
+              ASP.NET Web Forms (VB.NET, .NET Framework 4.8) with SQL injection risks and inefficient
+              in-memory paging, to a .NET 10 Minimal API (Dapper, JWT auth) and a React/Next.js frontend.
+              24 passing xUnit tests, verified end-to-end in a real browser.
+            </p>
+            <ul class="tag-list">
+              <li>ASP.NET</li><li>VB.NET</li><li>.NET 10</li><li>SQL Server</li><li>React</li>
+            </ul>
+            <a href="https://github.com/nachocaceres/legacy-webforms-to-dotnet10" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-thumb">
+            <img src="projects/legacy-vs-modern/assets/modern-accounts.jpg" alt="Split comparison of the legacy and modernized accounts screen">
+          </div>
+          <div class="project-body">
+            <h3>Legacy vs. Modern: Same Screen, Two Eras</h3>
+            <p>
+              The same accounts screen rendered exactly as it shipped in a 2012-era ASP.NET Web Forms app,
+              next to the real .NET 10 + React version — same data, same columns, same accounts.
+            </p>
+            <ul class="tag-list">
+              <li>ASP.NET</li><li>React</li><li>UI/UX</li>
+            </ul>
+            <a href="projects/legacy-vs-modern/index.html" class="project-link">View case study →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-alt">
+    <div class="container contact-inner">
+      <h2 class="section-title">Let's talk</h2>
+      <p class="section-sub">
+        Have a legacy .NET system that needs to be maintained, fixed, or modernized? I'd like to hear about it.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:nachocaceres99@gmail.com" class="btn btn-primary">Email me</a>
+        <a href="https://www.upwork.com/freelancers/~01cdbb230a85589834" class="btn btn-ghost" target="_blank" rel="noopener">Hire me on Upwork</a>
+        <a href="https://github.com/nachocaceres" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Ignacio Cáceres. Based in Santa Fe, Argentina.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

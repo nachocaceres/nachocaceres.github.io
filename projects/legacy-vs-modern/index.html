@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legacy vs. Modern: Same Screen, Two Eras — Ignacio Cáceres</title>
+<meta name="description" content="The same bank accounts screen, rendered exactly as it shipped in 2012 ASP.NET Web Forms, next to its .NET 10 + React modernization.">
+<style>
+:root {
+  --bg: #0b0f14;
+  --bg-alt: #10161d;
+  --card: #131a22;
+  --border: #212a35;
+  --text: #e6edf3;
+  --text-muted: #9aa7b4;
+  --accent: #58a6ff;
+  --accent-strong: #79c0ff;
+  --legacy: #d4a373;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--accent); }
+
+.top {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.back-link { font-size: 0.9rem; color: var(--text-muted); }
+.back-link:hover { color: var(--accent); }
+
+.intro { padding: 56px 0 32px; text-align: center; }
+.eyebrow {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.intro h1 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  margin: 0 0 14px;
+}
+.intro p {
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 32px 0 8px;
+}
+@media (max-width: 860px) {
+  .compare { grid-template-columns: 1fr; }
+}
+
+.window {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.window-chrome {
+  background: #e7e7e7;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #ccc;
+}
+.window.modern .window-chrome { background: #f1f3f5; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.r { background: #ff5f56; }
+.dot.y { background: #ffbd2e; }
+.dot.g { background: #27c93f; }
+.window-url {
+  margin-left: 8px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  color: #555;
+  font-family: Tahoma, Geneva, sans-serif;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.window.modern .window-url { font-family: -apple-system, sans-serif; color: #333; }
+
+.window-label {
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 6px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.window-label.legacy-tag { background: var(--legacy); color: #201304; }
+.window-label.modern-tag { background: var(--accent); color: #06111d; }
+
+.window-body {
+  height: 460px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.window-body img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+/* ---- Legacy (authentic) recreation ---- */
+.legacy-app {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  color: #000;
+  padding: 10px 14px;
+  background: #fff;
+}
+.legacy-app h2 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 10px;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.legacy-app .search-row {
+  margin-bottom: 10px;
+}
+.legacy-app input[type="text"] {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  padding: 2px 3px;
+  border: 1px solid #7f9db9;
+}
+.legacy-app input[type="submit"] {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 11px;
+  padding: 1px 8px;
+  margin-left: 4px;
+}
+table.gv {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+table.gv th, table.gv td {
+  border: 1px solid #ccc;
+  padding: 3px 6px;
+  text-align: left;
+  white-space: nowrap;
+}
+table.gv th {
+  background: #dcdcdc;
+  font-weight: normal;
+}
+table.gv th a {
+  color: #0000ee;
+  text-decoration: underline;
+  font-weight: bold;
+}
+table.gv tr:nth-child(even) td {
+  background: #f2f2f2;
+}
+.gv-pager {
+  margin-top: 8px;
+  font-size: 12px;
+}
+.gv-pager a {
+  color: #0000ee;
+  text-decoration: underline;
+  margin-right: 6px;
+}
+.gv-pager span {
+  font-weight: bold;
+  margin-right: 6px;
+}
+.legacy-note {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #666;
+  font-style: italic;
+}
+
+.diff {
+  margin-top: 48px;
+}
+.diff h2 { font-size: 1.3rem; text-align: center; margin-bottom: 24px; }
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 56px;
+}
+.diff-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.diff-item .before { color: var(--legacy); font-size: 0.85rem; display: block; margin-bottom: 4px; }
+.diff-item .after { color: var(--accent-strong); font-size: 0.95rem; font-weight: 600; }
+.diff-item .arrow { color: var(--text-muted); margin: 0 6px; }
+
+.cta {
+  text-align: center;
+  padding: 8px 0 72px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #06111d;
+  text-decoration: none;
+  margin: 0 6px;
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="container">
+    <a href="../../index.html" class="back-link">← Back to portfolio</a>
+  </div>
+</div>
+
+<section class="intro">
+  <div class="container">
+    <p class="eyebrow">Case study</p>
+    <h1>The same screen. Two eras.</h1>
+    <p>
+      This is the real accounts screen from my <a href="https://github.com/nachocaceres/legacy-webforms-to-dotnet10" target="_blank" rel="noopener">Customer Ledger demo project</a> —
+      left as it would have shipped in a 2012-era ASP.NET Web Forms app, right as the actual .NET 10 + React
+      version I built and tested. Same data, same columns, same accounts.
+    </p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="compare">
+
+    <div class="window">
+      <div class="window-label legacy-tag">Before — ASP.NET Web Forms, 2012</div>
+      <div class="window-chrome">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="window-url">http://10.20.4.12/AccountList.aspx</span>
+      </div>
+      <div class="window-body">
+        <div class="legacy-app">
+          <h2>Customer Ledger - Accounts</h2>
+          <div class="search-row">
+            <input type="text" value="" size="20" />
+            <input type="submit" value="Search" />
+          </div>
+          <table class="gv">
+            <tr>
+              <th><a href="#">Account #</a></th>
+              <th><a href="#">Holder</a></th>
+              <th><a href="#">Balance</a></th>
+              <th><a href="#">Status</a></th>
+              <th><a href="#">Branch</a></th>
+            </tr>
+            <tr><td>ACC-001006</td><td>Camila Suárez</td><td>$25,280.18</td><td>Active</td><td>West Branch</td></tr>
+            <tr><td>ACC-001018</td><td>Camila Suárez</td><td>$41,053.26</td><td>Suspended</td><td>West Branch</td></tr>
+            <tr><td>ACC-001030</td><td>Camila Suárez</td><td>$10,922.28</td><td>Active</td><td>West Branch</td></tr>
+            <tr><td>ACC-001042</td><td>Camila Suárez</td><td>$30,830.30</td><td>Active</td><td>West Branch</td></tr>
+            <tr><td>ACC-001054</td><td>Camila Suárez</td><td>$10,783.02</td><td>Active</td><td>West Branch</td></tr>
+            <tr><td>ACC-001066</td><td>Camila Suárez</td><td>$5,304.72</td><td>Active</td><td>West Branch</td></tr>
+            <tr><td>ACC-001078</td><td>Camila Suárez</td><td>$6,761.00</td><td>Suspended</td><td>West Branch</td></tr>
+            <tr><td>ACC-001090</td><td>Camila Suárez</td><td>$20,200.23</td><td>Active</td><td>West Branch</td></tr>
+            <tr><td>ACC-001102</td><td>Camila Suárez</td><td>$41,680.87</td><td>Active</td><td>West Branch</td></tr>
+          </table>
+          <div class="gv-pager">
+            <span>1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">...</a><a href="#">Next &gt;&gt;</a>
+          </div>
+          <p class="legacy-note">Every sort, page or search is a full postback — the entire page re-renders and view state round-trips over the wire.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="window modern">
+      <div class="window-label modern-tag">After — .NET 10 + React, 2026</div>
+      <div class="window-chrome">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="window-url">🔒 app.customerledger.dev/accounts</span>
+      </div>
+      <div class="window-body">
+        <img src="assets/modern-accounts.jpg" alt="Modern React accounts screen, same data">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section class="diff">
+  <div class="container">
+    <h2>What actually changed under the hood</h2>
+    <div class="diff-grid">
+      <div class="diff-item">
+        <span class="before">SQL built with string concatenation</span>
+        <span class="after">Parameterized queries via Dapper</span>
+      </div>
+      <div class="diff-item">
+        <span class="before">Whole DataTable loaded into memory, paged in code</span>
+        <span class="after">SQL Server OFFSET/FETCH — the database pages, not the app</span>
+      </div>
+      <div class="diff-item">
+        <span class="before">Full-page postback on every sort, page or search</span>
+        <span class="after">JSON REST API, client-side state, no page reload</span>
+      </div>
+      <div class="diff-item">
+        <span class="before">No automated tests</span>
+        <span class="after">24 passing xUnit tests covering the API</span>
+      </div>
+      <div class="diff-item">
+        <span class="before">Session-based auth tied to IIS</span>
+        <span class="after">Stateless JWT auth</span>
+      </div>
+      <div class="diff-item">
+        <span class="before">Business rules duplicated across code-behind files</span>
+        <span class="after">Centralized in a repository layer, unit-testable</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <a href="https://github.com/nachocaceres/legacy-webforms-to-dotnet10" class="btn" target="_blank" rel="noopener">View the full code on GitHub</a>
+  <a href="../../index.html#contact" class="btn ghost">Get in touch</a>
+</div>
+
+</body>
+</html>
