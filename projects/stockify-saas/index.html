@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stockify — Multi-Tenant Inventory SaaS — Ignacio Cáceres</title>
+<meta name="description" content="A multi-tenant inventory management SaaS with POS, AI assistant and Argentine e-invoicing, built end to end.">
+<style>
+:root {
+  --bg: #0b0f14;
+  --bg-alt: #10161d;
+  --card: #131a22;
+  --border: #212a35;
+  --text: #e6edf3;
+  --text-muted: #9aa7b4;
+  --accent: #58a6ff;
+  --accent-strong: #79c0ff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--accent); }
+
+.top { padding: 20px 0; border-bottom: 1px solid var(--border); }
+.back-link { font-size: 0.9rem; color: var(--text-muted); }
+.back-link:hover { color: var(--accent); }
+
+.intro { padding: 56px 0 24px; }
+.eyebrow { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; }
+.intro h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin: 0 0 14px; }
+.intro p { color: var(--text-muted); max-width: 720px; }
+
+.badge-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0 8px;
+}
+.badge {
+  font-size: 0.8rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--text-muted);
+}
+
+.shot {
+  margin: 32px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.shot img { width: 100%; display: block; }
+.shot-caption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 10px 0 0;
+}
+
+.section { padding: 32px 0; }
+.section h2 { font-size: 1.3rem; margin-bottom: 16px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.grid-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.grid-item h3 { font-size: 1rem; margin: 0 0 8px; }
+.grid-item p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+
+.note {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 16px 20px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 32px 0;
+}
+.note strong { color: var(--text); }
+
+.cta { text-align: center; padding: 24px 0 72px; }
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #06111d;
+  text-decoration: none;
+  margin: 0 6px;
+}
+.btn.ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="container">
+    <a href="../../index.html" class="back-link">← Back to portfolio</a>
+  </div>
+</div>
+
+<section class="intro">
+  <div class="container">
+    <p class="eyebrow">Case study — product build</p>
+    <h1>Stockify: a multi-tenant inventory SaaS, built end to end</h1>
+    <p>
+      A stock management platform for small businesses, starting with a real client — a motorcycle parts shop —
+      and designed from day one to scale to other verticals. I own the full stack: data model, API, frontend,
+      auth, and the AI features on top.
+    </p>
+    <div class="badge-row">
+      <span class="badge">ASP.NET Core</span>
+      <span class="badge">SQL Server</span>
+      <span class="badge">React + TypeScript</span>
+      <span class="badge">JWT / Multi-tenant</span>
+      <span class="badge">AI Assistant</span>
+      <span class="badge">AFIP e-invoicing</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="shot">
+    <img src="assets/dashboard.jpg" alt="Stockify dashboard showing KPIs, monthly profit, top products and a sales chart">
+  </div>
+  <p class="shot-caption">Dashboard — live KPIs, monthly margin calculated from real per-sale costs, top products and best customers, 30-day sales chart.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="grid-item">
+        <h3>Inventory &amp; POS</h3>
+        <p>Products, categories, suppliers, stock entries and a fast counter-sale ("Modo caja") flow, with barcode scanner support.</p>
+      </div>
+      <div class="grid-item">
+        <h3>Multi-tenant from day one</h3>
+        <p>Every business gets its own isolated data behind a single deployment — JWT claims carry the tenant ID, every query is scoped by it.</p>
+      </div>
+      <div class="grid-item">
+        <h3>AI stock assistant</h3>
+        <p>Natural-language questions about inventory ("what's running low?", "what should I reorder?") answered against the business's real data.</p>
+      </div>
+      <div class="grid-item">
+        <h3>Argentine e-invoicing</h3>
+        <p>AFIP/ARCA electronic invoicing integration, so sales generate compliant fiscal documents, not just internal records.</p>
+      </div>
+      <div class="grid-item">
+        <h3>Quotes &amp; running accounts</h3>
+        <p>Customer quotes ("Presupuestos") and running credit accounts ("Cuenta corriente") for repeat business customers.</p>
+      </div>
+      <div class="grid-item">
+        <h3>Built for real usage</h3>
+        <p>Designed around an actual shop's workflow — a business that used to track stock by memory, now with alerts before it runs out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="shot">
+    <img src="assets/productos.jpg" alt="Stockify product catalog with cost, price, margin and stock status columns">
+  </div>
+  <p class="shot-caption">Product catalog — cost/price/margin per item, live stock status, low-stock flagging.</p>
+</div>
+
+<div class="container">
+  <div class="shot">
+    <img src="assets/asistente.jpg" alt="Stockify AI assistant chat interface for natural-language inventory questions">
+  </div>
+  <p class="shot-caption">AI assistant — the interface layer over a provider-agnostic <code>IAiService</code>, currently backed by Llama 3.3 via Groq.</p>
+</div>
+
+<div class="container">
+  <div class="note">
+    <strong>Why there's no code link here.</strong> This is a real product I'm building to eventually sell or
+    license to other small businesses, not a portfolio demo — so the repository stays private on purpose. Everything
+    on this page is from the actual running application. Happy to walk through the architecture or specific
+    decisions in a call.
+  </div>
+</div>
+
+<div class="cta">
+  <a href="../../index.html#contact" class="btn">Get in touch</a>
+  <a href="../../index.html" class="btn ghost">Back to portfolio</a>
+</div>
+
+</body>
+</html>
