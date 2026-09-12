@@ -225,6 +225,25 @@ h1, h2, h3 { line-height: 1.25; margin: 0 0 16px; }
   display: block;
 }
 
+.project-thumb-code {
+  background: #05080b;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.project-thumb-code pre {
+  margin: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: #9aa7b4;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+.project-thumb-code code { color: inherit; }
+
 .project-thumb-placeholder {
   display: flex;
   align-items: center;

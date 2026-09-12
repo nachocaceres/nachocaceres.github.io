@@ -151,6 +151,30 @@
           </div>
         </article>
 
+        <article class="project-card">
+          <div class="project-thumb project-thumb-code">
+            <pre><code>POST /api/accounts/verify
+{
+  "accountNumber": "ACC-100234",
+  "holderName": "Marina López",
+  "status": "Active",
+  "isVerified": true
+}</code></pre>
+          </div>
+          <div class="project-body">
+            <h3>Legacy WCF → REST Facade</h3>
+            <p>
+              A different modernization story: instead of rewriting a legacy WCF SOAP service, a .NET 10
+              REST API fronts it untouched — the strangler-fig pattern. Three typed exceptions replace one
+              catch-all SOAP fault, mapped to proper 404/422/503 responses with OpenAPI docs.
+            </p>
+            <ul class="tag-list">
+              <li>WCF</li><li>.NET 10</li><li>REST API</li><li>SOAP</li>
+            </ul>
+            <a href="https://github.com/nachocaceres/wcf-to-rest-facade" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
