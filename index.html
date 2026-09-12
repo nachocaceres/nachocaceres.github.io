@@ -175,6 +175,29 @@
           </div>
         </article>
 
+        <article class="project-card">
+          <div class="project-thumb project-thumb-code">
+            <pre><code>Before: 8,604 ms, 174,444 reads
+        Clustered Index Scan x12
+After:     15 ms,     384 reads
+        Index Seek
+
+        ~570x faster</code></pre>
+          </div>
+          <div class="project-body">
+            <h3>Slow Report Optimization</h3>
+            <p>
+              A branch revenue report on a 2M-row table, sped up ~570x — real numbers from a real SQL Server
+              instance, not estimates. Non-sargable date filters, a per-row scalar function, and a
+              branch-by-branch cursor replaced with one sargable, set-based query and a covering index.
+            </p>
+            <ul class="tag-list">
+              <li>SQL Server</li><li>T-SQL</li><li>Query Tuning</li><li>Execution Plans</li>
+            </ul>
+            <a href="https://github.com/nachocaceres/slow-report-optimization" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
